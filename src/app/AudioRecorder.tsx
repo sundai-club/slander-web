@@ -1,10 +1,10 @@
-import React, { useState, useRef, useCallback } from 'react';
-import { Button } from '../components/ui/button';
 import { Mic, Square } from 'lucide-react';
+import React, { useCallback, useRef } from 'react';
+import { Button } from '../components/ui/button';
+import { useAudioStore } from './AudioStore';
 
 const AudioRecorder: React.FC = () => {
-  const [isRecording, setIsRecording] = useState<boolean>(false);
-  const [audioURL, setAudioURL] = useState<string>('');
+  const { isRecording, audioURL, audioBlob, setIsRecording, setAudioURL, setAudioBlob } = useAudioStore();
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
 
@@ -19,14 +19,14 @@ const AudioRecorder: React.FC = () => {
     } catch (error) {
       console.error('Error accessing microphone:', error);
     }
-  }, []);
+  }, [setIsRecording]);
 
   const stopRecording = useCallback(() => {
     if (mediaRecorderRef.current && isRecording) {
       mediaRecorderRef.current.stop();
       setIsRecording(false);
     }
-  }, [isRecording]);
+  }, [isRecording, setIsRecording]);
 
   const handleDataAvailable = useCallback((event: BlobEvent) => {
     if (event.data.size > 0) {
@@ -38,11 +38,12 @@ const AudioRecorder: React.FC = () => {
     const blob = new Blob(chunksRef.current, { type: 'audio/webm' });
     const url = URL.createObjectURL(blob);
     setAudioURL(url);
+    setAudioBlob(blob);
     chunksRef.current = [];
-  }, []);
+  }, [setAudioURL, setAudioBlob]);
 
   return (
-    <div className="flex flex-col items-center space-y-4">
+    <div className="flex flex-col items-center space-y-4 gap-2">
       <div className="flex space-x-2">
         <Button
           onClick={isRecording ? stopRecording : startRecording}
