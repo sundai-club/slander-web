@@ -4,14 +4,8 @@ import { Button } from "../components/ui/button";
 import { useAudioStore } from "./AudioStore";
 
 const AudioRecorder: React.FC = () => {
-  const {
-    isRecording,
-    audioURL,
-    audioBlob,
-    setIsRecording,
-    setAudioURL,
-    setAudioBlob,
-  } = useAudioStore();
+  const { isRecording, audioURL, setIsRecording, setAudioURL, setAudioBlob } =
+    useAudioStore();
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
 

@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
 interface AudioStore {
-  returnedId: String | null;
+  returnedId: string | null;
   isRecording: boolean;
   audioURL: string;
   audioBlob: Blob | null;
-  highlights: any[];
-  setReturnedId: (returnedId: String | null) => void;
-  setHighlights: (highlights: any[]) => void;
+  highlights: object[];
+  setReturnedId: (returnedId: string | null) => void;
+  setHighlights: (highlights: object[]) => void;
   setIsRecording: (isRecording: boolean) => void;
   setAudioURL: (url: string) => void;
   setAudioBlob: (blob: Blob | null) => void;
