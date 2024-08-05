@@ -11,8 +11,7 @@ declare global {
 }
 
 const PlayerComponent = () => {
-  const { isRecording, audioURL, setIsRecording, setAudioURL, setAudioBlob } =
-    useAudioStore();
+  const { setAudioURL, setAudioBlob, audioURL } = useAudioStore();
   const audioFile = "/testAudio.mp3";
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -133,6 +132,7 @@ const PlayerComponent = () => {
 
   return (
     <>
+      {" "}
       <div className="mt-[100px]">
         <div className="flex items-center space-x-4">
           <input
@@ -149,7 +149,7 @@ const PlayerComponent = () => {
               }
             }}
           />
-          <button
+          {/* <button
             onClick={playingButton}
             className="border-none bg-transparent p-0 focus:outline-none"
           >
@@ -160,21 +160,20 @@ const PlayerComponent = () => {
           <input
             type="range"
             min="0"
-            // max={duration / 1000}
+            max={Number(duration) / 1000}
             value={seconds}
             onChange={(e) => {
               sound.seek([e.target.value]);
             }}
             className="w-[800px] accent-yellow-500"
-          />
+          /> */}
         </div>
-        <div className="mt-2">
+        {/* <div className="mt-2">
           <p className="text-sm text-white">
             {currTime.min}:{currTime.sec}
           </p>
-        </div>
+        </div> */}
       </div>
-
       <div className="mx-[170px] grid grid-cols-3 gap-x-[300px] gap-y-[60px] p-14">
         {highlights.map((highlight, index) => (
           <div key={index}>

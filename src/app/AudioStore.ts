@@ -13,6 +13,8 @@ export const useAudioStore = create<AudioStore>((set) => ({
   isRecording: false,
   audioURL: "",
   audioBlob: null,
+  audioRef: null,
+  setAudioRef: (ref) => set({ audioRef: ref }),
   setIsRecording: (isRecording) => set({ isRecording }),
   setAudioURL: (audioURL) => set({ audioURL }),
   setAudioBlob: (audioBlob) => set({ audioBlob }),
