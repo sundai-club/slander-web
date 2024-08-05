@@ -5,6 +5,7 @@ interface AudioStore {
   isRecording: boolean;
   audioURL: string;
   audioBlob: Blob | null;
+  highlights: any[];
   setReturnedId: (returnedId: String | null) => void;
   setHighlights: (highlights: any[]) => void;
   setIsRecording: (isRecording: boolean) => void;
