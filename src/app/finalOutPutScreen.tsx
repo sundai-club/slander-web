@@ -11,7 +11,7 @@ declare global {
 }
 
 const PlayerComponent = () => {
-  const { setAudioURL, setAudioBlob, audioURL } = useAudioStore();
+  const { setAudioURL, setAudioBlob, audioURL, highlights } = useAudioStore();
   const audioFile = "/testAudio.mp3";
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -128,7 +128,6 @@ const PlayerComponent = () => {
   };
 
   //test count - the number of highlights in a video will be equal to the number of cards being displayed
-  const highlights = mockData.data.highlights; //having 7 for testing purposes;
 
   return (
     <>
