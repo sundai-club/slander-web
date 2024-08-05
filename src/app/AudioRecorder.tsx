@@ -52,12 +52,13 @@ const AudioRecorder: React.FC = () => {
     chunksRef.current = [];
   }, [setAudioURL, setAudioBlob]);
 
-  return (
+return (
     <div className="flex flex-col items-center gap-2 space-y-4">
       <div className="flex space-x-2">
         <Button
           onClick={isRecording ? stopRecording : startRecording}
           variant={isRecording ? "destructive" : "default"}
+          className={isRecording ? "pulsingRecordButton" : ""}
         >
           {isRecording ? (
             <Square className="mr-2 h-4 w-4" />
@@ -67,6 +68,9 @@ const AudioRecorder: React.FC = () => {
           {isRecording ? "Stop Recording" : "Start Recording"}
         </Button>
       </div>
+      {isRecording && (
+        <div className="text-sm text-red-500">Recording in progress...</div>
+      )}
       {audioURL && (
         <audio ref={setaudioContainerRef} controls src={audioURL}>
           Your browser does not support the audio element.
