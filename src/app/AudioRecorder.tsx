@@ -4,8 +4,14 @@ import { Button } from "../components/ui/button";
 import { useAudioStore } from "./AudioStore";
 
 const AudioRecorder: React.FC = () => {
-  const { isRecording, audioURL, setIsRecording, setAudioURL, setAudioBlob } =
-    useAudioStore();
+  const {
+    isRecording,
+    audioURL,
+    setIsRecording,
+    setAudioURL,
+    setAudioBlob,
+    setaudioContainerRef,
+  } = useAudioStore();
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
 
@@ -62,7 +68,7 @@ const AudioRecorder: React.FC = () => {
         </Button>
       </div>
       {audioURL && (
-        <audio controls src={audioURL}>
+        <audio ref={setaudioContainerRef} controls src={audioURL}>
           Your browser does not support the audio element.
         </audio>
       )}
