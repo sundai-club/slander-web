@@ -7,6 +7,7 @@ const SubmitButton = () => {
   const {
     audioBlob,
     returnedId,
+    selectedStrategy,
     setHighlights,
     setReturnedId,
     setIsProccessing,
@@ -25,7 +26,7 @@ const SubmitButton = () => {
     const formData = new FormData();
     formData.append("file", audioBlob, "recording.mp3");
     try {
-      const response = await fetch("/api/upload", {
+      const response = await fetch(`/api/upload?strategy=${selectedStrategy}`, {
         method: "POST",
         headers: {
           // "Content-Type": "multipart/form-data", // This should not be set when using FormData

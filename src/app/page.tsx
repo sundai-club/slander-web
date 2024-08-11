@@ -4,6 +4,7 @@ import AudioRecorder from "./AudioRecorder";
 import PlayerComponent from "./finalOutPutScreen";
 import localFont from "next/font/local";
 import Image from "next/image";
+import StrategyInput from "./StrategyInput";
 const myFont = localFont({
   src: "../../public/fonts/DM_Sans/DMSans-Italic-VariableFont_opsz,wght.ttf",
   variable: "--font-woff",
@@ -24,6 +25,7 @@ export default function HomePage() {
       <div className="mt-20 flex min-h-screen flex-col items-center">
         <AudioRecorder />
         <PlayerComponent />
+        <StrategyInput />
         <SubmitButton />
       </div>
     </main>

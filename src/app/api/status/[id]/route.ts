@@ -17,6 +17,9 @@ export async function POST(
     );
     const res = await apiResponse.json();
     console.log(res);
+    if (res.data?.highlights) {
+      console.log(res.data.highlights);
+    }
     return NextResponse.json(res);
   } catch (err) {
     console.log(err);
