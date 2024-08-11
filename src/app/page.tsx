@@ -26,7 +26,7 @@ export default function HomePage() {
         <AudioRecorder />
         <PlayerComponent />
         <StrategyInput />
-        <SubmitButton />
+        <SubmitButton audioId={false} />
       </div>
     </main>
   );

@@ -2,8 +2,9 @@ import { Button } from "~/components/ui/button";
 import { useAudioStore } from "./AudioStore"; // Ensure you have this hook properly imported
 import { useEffect, useState } from "react";
 import { set } from "zod";
-
-const SubmitButton = () => {
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
+const SubmitButton = ({ audioId }) => {
   const {
     audioBlob,
     returnedId,
@@ -14,7 +15,7 @@ const SubmitButton = () => {
   } = useAudioStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null); // Add error state
-
+  const router = useRouter();
   const uploadAudio = async () => {
     setIsSubmitting(true);
     setError(null); // Reset error state
@@ -40,39 +41,13 @@ const SubmitButton = () => {
       setReturnedId(postjsonRes.id);
       setIsSubmitting(false);
       setIsProccessing(true);
+      router.push(`/audio/${postjsonRes.id}`);
     } catch (error) {
       setError("Failed to upload audio"); // Set error message
       setIsProccessing(false);
       console.error("Error uploading audio:", error);
     }
   };
-
-  useEffect(() => {
-    if (!returnedId) return;
-    function checkProcessStatus() {
-      const intervalId = setInterval(async () => {
-        try {
-          const response = await fetch(`/api/status/${returnedId}`, {
-            method: "POST",
-          });
-          const data = await response.json();
-          if (data.status != "processing") {
-            clearInterval(intervalId);
-            setIsProccessing(false);
-            setHighlights(data.data.highlights);
-            console.log(`Process ${returnedId} ${data.status}`);
-          }
-          console.log(`Process is ${data.status}`);
-        } catch (error) {
-          console.error("Error checking process status:", error);
-          clearInterval(intervalId);
-          setError("Error checking process status"); // Set error message
-        }
-      }, 5000);
-    }
-
-    checkProcessStatus();
-  }, [returnedId]);
 
   return (
     <>

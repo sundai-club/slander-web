@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAudioStore } from "~/app/AudioStore";
 
 const StrategyInput = () => {
-  const { strategy, setStrategy, setSelectedStrategy, selectedStrategy } =
-    useAudioStore();
-  const [inputValue, setInputValue] = useState("");
+  const { strategy, setStrategy, setSelectedStrategy } = useAudioStore();
   const [error, setError] = useState(null);
 
   const fetchStrategies = async () => {
