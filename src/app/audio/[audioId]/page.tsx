@@ -37,7 +37,12 @@ export default function HomePage({ params: { audioId } }) {
   }, [audioId]);
   return (
     <main
-      className={`flex min-h-screen flex-col items-center bg-gradient-to-b from-[#D1EDE0] to-[#7ABF8C] text-white`}
+      className={`flex flex-grow flex-col items-center justify-center text-white`}
+      style={{
+        backgroundImage: `url('/images/chucklebackground.png')`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
     >
       <Image
         className="mt-2"

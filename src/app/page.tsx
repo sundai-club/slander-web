@@ -13,7 +13,12 @@ const myFont = localFont({
 export default function HomePage() {
   return (
     <main
-      className={`flex min-h-screen flex-col items-center bg-gradient-to-b from-[#D1EDE0] to-[#7ABF8C] text-white ${myFont.variable}`}
+      className={`flex flex-col items-center justify-center text-white ${myFont.variable} flex-grow`}
+      style={{
+        backgroundImage: `url('/images/chucklebackground.png')`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
     >
       <Image
         className="mt-2"

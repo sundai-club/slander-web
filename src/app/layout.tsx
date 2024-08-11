@@ -1,7 +1,15 @@
 import "~/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
+
+import localFont from "next/font/local";
+
 import { type Metadata } from "next";
+
+const myFont = localFont({
+  src: "../../public/fonts/DM_Sans/DMSans-Italic-VariableFont_opsz,wght.ttf",
+  variable: "--font-woff",
+});
 
 export const metadata: Metadata = {
   title: "Chucklebox",
@@ -14,7 +22,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
+    <html lang="en" className={`${myFont.variable}`}>
       <body>{children}</body>
     </html>
   );

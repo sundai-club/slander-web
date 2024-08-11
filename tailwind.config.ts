@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        chuckleboxBackground: "url('/images/chucklebackground.png')",
+      },
       fontFamily: {
         sans: ["var(--font-woff)"],
       },
