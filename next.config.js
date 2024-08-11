@@ -6,11 +6,6 @@ await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
 const config = {
-  output: "export",
-
-  basePath: "/slander-web",
-  reactStrictMode: true,
-
   typescript: {
     ignoreBuildErrors: true,
   },
