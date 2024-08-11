@@ -1,7 +1,5 @@
 import "~/styles/globals.css";
 
-import { GeistSans } from "geist/font/sans";
-
 import localFont from "next/font/local";
 
 import { type Metadata } from "next";
@@ -22,8 +20,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${myFont.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${myFont.variable} bg-[#C3F0C0]`}>
+      <body className="h-full bg-gradient-to-b from-[#D1EDE0] to-[#7ABF8C]">
+        {children}
+      </body>
     </html>
   );
 }
