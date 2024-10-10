@@ -58,7 +58,7 @@ const SubmitButton = ({ audioId }) => {
       ) : (
         <Button onClick={uploadAudio}>Submit</Button>
       )}
-      {true && <div className="mt-[-0.25rem] text-red-500">{error}</div>}
+       <div className="mt-[-0.25rem] text-red-500">{error}</div>
     </>
   );
 };
